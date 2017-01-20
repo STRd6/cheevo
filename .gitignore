@@ -1,0 +1,5 @@
+style.css
+npm-debug.log
+templates/*.js
+node_modules/
+dist/cheevo.min.js.gz

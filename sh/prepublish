@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+set -o pipefail
+
+mkdir -p dist
+
+./node_modules/.bin/hamlet -d templates -r "require('hamlet.coffee')"
+
+./node_modules/.bin/stylus \
+  style.styl
+
+./node_modules/.bin/browserify \
+  --transform coffeeify \
+  --transform browserify-css \
+  --extension=.coffee \
+  --standalone Cheevo \
+  cheevo.coffee \
+  > dist/cheevo.js
+
+./node_modules/.bin/uglifyjs \
+  dist/cheevo.js \
+  --compress \
+  --mangle \
+  --screw-ie8 \
+  > dist/cheevo.min.js
+
+# To check size
+gzip < dist/cheevo.min.js > dist/cheevo.min.js.gz
