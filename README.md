@@ -8,7 +8,7 @@ Right now cheevos.js only displays cheevos, but that's probably enough to de-scr
 
 Add to you page:
 
-    <script src="TODO: unpkg cdn"></script>
+    <script src="https://unpkg.com/cheevo@0.2.0/dist/cheevo.js"></script>
 
 Display:
 
